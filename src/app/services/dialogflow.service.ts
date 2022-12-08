@@ -28,10 +28,6 @@ export class DialogflowService {
       .append('Access-Control-Allow-Headers', 'Content-Type')
       .append('Access-Control-Allow-Methods', 'POST')
       .append('Access-Control-Allow-Origin', '*');
-
-    // return this.http.post(`${this.baseURL}`, data).map((res) => {
-    //   return res.json();
-    // });
     console.clear();
     console.log('service :');
 

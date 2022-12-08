@@ -27,28 +27,31 @@ export class MessageFormComponent implements OnInit {
     'Education',
     'Environment',
     'Politics',
-    'Health',
+    'Healthcare',
     'Technology',
   ];
-
+  public selectedTopic = '';
   selectedTopics : any = {
     'Politics': false, 
-    'Health': false,
+    'Healthcare': false,
     'Education': false,
     'Environment': false,
     'Technology': false,
   };
 
+
   currContent = '';
   constructor(private dialogFlowService: DialogflowService) {
     this.messages = this.dialogFlowService.getLocalMessages();
-    // alert('MSG FORM 44' + JSON.stringify(this.messages));
   }
 
   ngOnInit() {}
 
   chipChange(event : any) {
-    // alert(event.value)
+
+    this.selectedTopic = (event.value && event.value!=undefined) ? event.value : '';
+    // alert((this.selectedTopic ))
+    // return (event.value)
   }
   toggleSelection(chip: any) {
     this.selectedTopics[chip.value] = !this.selectedTopics[chip.value];
@@ -57,10 +60,10 @@ export class MessageFormComponent implements OnInit {
   }
 
   getSelectedTopics() {
-    let res = [];
+    let res = '';
     for (let key in this.selectedTopics) {
       if (this.selectedTopics[key]) {
-        res.push(key);
+        res = key;
       }
     }
     return res;
@@ -74,11 +77,11 @@ export class MessageFormComponent implements OnInit {
       this.currContent = '';
       this.messages.push(this.message);
       this.dialogFlowService.updateLocalMessages(this.message);
-
+      // alert('before  :'+ this.getSelectedTopics());
       this.dialogFlowService
-        .getResponse(this.message.content, this.getSelectedTopics())
+        .getResponse(this.message.content, this.selectedTopic)
         .subscribe((res) => {
-          alert(JSON.stringify(res));
+          // alert(JSON.stringify(res));
           let temp = res as Message;
           temp.timestamp =  this.dialogFlowService.format24Hour();
           // {"content":"Is both an option? If so, I saw both! But I do love beethoven's 5","timestamp":"","avatar":"","isBot":true}
