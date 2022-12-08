@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/chat-ui",
+            "outputPath": "dist/ir-project-2022",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -99,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
