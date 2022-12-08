@@ -84,6 +84,9 @@ export class MessageFormComponent implements OnInit {
           // alert(JSON.stringify(res));
           let temp = res as Message;
           temp.timestamp =  this.dialogFlowService.format24Hour();
+          if(temp.content == ''){
+            temp.content = 'Sorry, I did not get you';
+          }
           // {"content":"Is both an option? If so, I saw both! But I do love beethoven's 5","timestamp":"","avatar":"","isBot":true}
           this.dialogFlowService.updateLocalMessages(res);
         });

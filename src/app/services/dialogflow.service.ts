@@ -11,7 +11,7 @@ import { Message } from '../models';
 @Injectable()
 export class DialogflowService {
   // private baseURL: string = 'https://api.dialogflow.com/v1/query?v=20150910';
-  private baseURL: string = 'http://192.168.1.59:5000/getMsg';
+  private baseURL: string = 'http://34.132.62.144:5000/getMsg';
   // private token: string = environment.token;
   // private messagesSer: Message[] = [];
 
@@ -31,7 +31,7 @@ export class DialogflowService {
     console.clear();
     console.log('service :');
 
-    return this.https.post('http://192.168.1.59:5000/getMsg', data, {
+    return this.https.post('http://34.132.62.144:5000/getMsg', data, {
       headers,
     });
   }
