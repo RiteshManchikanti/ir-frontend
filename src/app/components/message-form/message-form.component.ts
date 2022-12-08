@@ -10,7 +10,7 @@ import { MatChip } from '@angular/material/chips';
   styleUrls: ['./message-form.component.scss'],
 })
 export class MessageFormComponent implements OnInit {
-  options: string[] = [];
+  options: string[] = [];  
 
   // @Input('message')
   public message: Message = new Message(
